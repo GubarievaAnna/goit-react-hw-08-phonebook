@@ -1,0 +1,18 @@
+.container {
+  width: 400px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titleContacts {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.titlePhonebook {
+  font-size: 32px;
+  margin-bottom: 25px;
+}

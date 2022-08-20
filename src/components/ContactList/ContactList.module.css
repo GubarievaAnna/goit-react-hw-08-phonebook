@@ -1,0 +1,22 @@
+.list {
+  padding-left: 25px;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
