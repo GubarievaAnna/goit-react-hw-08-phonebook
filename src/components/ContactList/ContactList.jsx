@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ThreeDots } from 'react-loader-spinner';
+// import { ThreeDots } from 'react-loader-spinner';
 import {
   getFilteredContacts,
   getIsLoading,
 } from 'redux/contacts/contactsSelector';
-import {
-  removeContacts,
-  getContacts,
-} from '../../redux/contacts/contactsOperations';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+// import {
+//   removeContacts,
+//   getContacts,
+// } from '../../redux/contacts/contactsOperations';
+// import Button from '@mui/material/Button';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import s from './ContactList.module.css';
 
 const ContactList = () => {

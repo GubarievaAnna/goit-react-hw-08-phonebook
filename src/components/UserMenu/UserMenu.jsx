@@ -1,7 +1,7 @@
-import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { getUserEmail } from 'redux/auth/authSelector';
 import { AiOutlineLogout } from 'react-icons/ai';
+import { getUserEmail } from 'redux/auth/authSelector';
+import { Button } from '@mui/material';
 import s from './UserMenu.module.css';
 
 function UserMenu() {

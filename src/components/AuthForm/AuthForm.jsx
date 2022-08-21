@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Avatar from '@mui/material/Avatar';
@@ -9,9 +10,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import s from './AuthForm.module.css';
-import { useDispatch } from 'react-redux';
 import { registerUser, loginUser } from '../../redux/auth/authOperations';
+import s from './AuthForm.module.css';
 
 export const theme = createTheme({
   palette: {
