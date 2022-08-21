@@ -2,13 +2,19 @@
   padding-left: 25px;
 }
 
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .item:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .paragraph {
-  display: inline-block;
-  margin-right: 25px;
+  margin-right: 50px;
 }
 
 .name {
@@ -19,4 +25,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button {
+  margin-left: auto;
+}
+
+.button:hover,
+button:active {
+  border-color: #fff;
+  scale: 1.1;
+  color: #fff;
+}
+
+.total {
+  margin-bottom: 50px;
 }

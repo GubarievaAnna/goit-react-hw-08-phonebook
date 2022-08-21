@@ -1,51 +1,48 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { ThreeDots } from 'react-loader-spinner';
+import { getContacts, removeContacts } from 'redux/contacts/contactsOperations';
+import { getUserToken } from 'redux/auth/authSelector';
 import {
   getFilteredContacts,
   getIsLoading,
 } from 'redux/contacts/contactsSelector';
-// import {
-//   removeContacts,
-//   getContacts,
-// } from '../../redux/contacts/contactsOperations';
-// import Button from '@mui/material/Button';
-// import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Loader from 'components/Loader/Loader';
 import s from './ContactList.module.css';
 
 const ContactList = () => {
+  const isLoading = useSelector(getIsLoading);
   const contacts = useSelector(getFilteredContacts);
-  // const isLoading = useSelector(getIsLoading);
+  const token = useSelector(getUserToken);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getContacts(token));
+  }, [token, dispatch]);
 
   return (
     <>
-      <ul className={s.list}>
-        {/* {contacts.map(({ id, name, phone }) => (
-          <li key={id} className={s.item}>
-            <p className={s.paragraph}>
-              <span className={s.name}>{name}</span>: {phone}
-            </p>
-            <Button variant="outlined" startIcon={<DeleteIcon />}>
-              Delete
-            </Button>
-          </li>
-        ))} */}
-      </ul>
-      {/* {isLoading && (
-        <div className={s.spinner}>
-          <ThreeDots
-            color="#5d8aa8"
-            height={50}
-            width={50}
-            ariaLabel="three-dots-loading"
-          />
-        </div>
-      )} */}
+      <div>
+        <ul className={s.list}>
+          {contacts.map(({ id, name, number }) => (
+            <li key={id} className={s.item}>
+              <p className={s.paragraph}>
+                <span className={s.name}>{name}</span>: {number}
+              </p>
+              <Button
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+                className={s.button}
+                onClick={() => dispatch(removeContacts(id))}
+              >
+                Delete
+              </Button>
+            </li>
+          ))}
+        </ul>
+        {isLoading && <Loader />}
+      </div>
     </>
   );
 };

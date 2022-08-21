@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -11,9 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { registerUser, loginUser } from '../../redux/auth/authOperations';
+import { getAutError } from 'redux/auth/authSelector';
 import s from './AuthForm.module.css';
+import { useEffect } from 'react';
+import { changeError } from 'redux/auth/authSlice';
 
-export const theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#13b3ff',
@@ -27,8 +31,20 @@ const AuthForm = ({ title }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(getAutError);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!error) return;
+    toast.error('You have entered invalid data. Please try again.', {
+      autoClose: 2000,
+      theme: 'colored',
+    });
+  }, [error]);
+
+  const onLinkClick = e => {
+    dispatch(changeError());
+  };
 
   const onInputChange = e => {
     const { name, value } = e.target;
@@ -69,13 +85,11 @@ const AuthForm = ({ title }) => {
     if (title === 'Register') {
       const userRegisterData = { name, email, password };
       dispatch(registerUser(userRegisterData));
-      navigate('/contacts');
       reset();
       return;
     }
     const userLoginData = { email, password };
     dispatch(loginUser(userLoginData));
-    navigate('/contacts');
     reset();
   };
 
@@ -147,6 +161,7 @@ const AuthForm = ({ title }) => {
             to={title === 'Register' ? '/login' : '/register'}
             variant="body2"
             className={s.link}
+            onClick={onLinkClick}
           >
             {title === 'Register'
               ? 'Do you have already account? Sign In'
@@ -156,6 +171,10 @@ const AuthForm = ({ title }) => {
       </Box>
     </ThemeProvider>
   );
+};
+
+AuthForm.propTypes = {
+  title: PropTypes.string,
 };
 
 export default AuthForm;

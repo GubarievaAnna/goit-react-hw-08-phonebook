@@ -3,13 +3,13 @@ import {
   getContactsApi,
   addContactsApi,
   removeContactsApi,
-} from '../../utils/dataBaseApi';
+} from '../../utils/Api';
 
 export const getContacts = createAsyncThunk(
   'getContacts',
-  async (_, thunkApi) => {
+  async (token, thunkApi) => {
     try {
-      const items = await getContactsApi();
+      const items = await getContactsApi(token);
       return items;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
