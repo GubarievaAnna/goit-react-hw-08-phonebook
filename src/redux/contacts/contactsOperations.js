@@ -3,7 +3,7 @@ import {
   getContactsApi,
   addContactsApi,
   removeContactsApi,
-} from '../../utils/mockapiApi';
+} from '../../utils/dataBaseApi';
 
 export const getContacts = createAsyncThunk(
   'getContacts',

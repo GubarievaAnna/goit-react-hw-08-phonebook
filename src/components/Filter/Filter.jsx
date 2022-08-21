@@ -8,17 +8,19 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        type="text"
-        name="filter"
-        className={s.input}
-        value={filter}
-        onChange={e => dispatch(filterContacts(e.target.value))}
-        required
-      />
-    </label>
+    <div className={s.filter}>
+      <label className={s.label}>
+        Find contacts by name
+        <input
+          type="text"
+          name="filter"
+          className={s.input}
+          value={filter}
+          onChange={e => dispatch(filterContacts(e.target.value))}
+          required
+        />
+      </label>
+    </div>
   );
 };
 

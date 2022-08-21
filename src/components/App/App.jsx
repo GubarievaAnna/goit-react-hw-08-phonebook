@@ -1,19 +1,23 @@
-import { ToastContainer } from 'react-toastify';
-import ContactForm from '../ContactForm/ContactForm.jsx';
-import Filter from '../Filter/Filter.jsx';
-import ContactList from '../ContactList/ContactList.jsx';
-import s from './App.module.css';
+import { lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import MainWrapper from 'components/MainWrapper/MainWrapper.jsx';
+
+const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
+const SignInPage = lazy(() => import('../../pages/LoginPage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 const App = () => {
   return (
-    <div className={s.container}>
-      <h1 className={s.titlePhonebook}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={s.titleContacts}>Contacts</h2>
-      <Filter />
-      <ContactList />
-      <ToastContainer />
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<MainWrapper />}>
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<SignInPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/register" />} />
+      </Routes>
+    </>
   );
 };
 

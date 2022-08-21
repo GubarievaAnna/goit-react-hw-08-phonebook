@@ -9,36 +9,34 @@ import {
   removeContacts,
   getContacts,
 } from '../../redux/contacts/contactsOperations';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import s from './ContactList.module.css';
 
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
-  const isLoading = useSelector(getIsLoading);
+  // const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getContacts());
+  // }, [dispatch]);
 
-  console.log(isLoading);
   return (
     <>
       <ul className={s.list}>
-        {contacts.map(({ id, name, phone }) => (
+        {/* {contacts.map(({ id, name, phone }) => (
           <li key={id} className={s.item}>
             <p className={s.paragraph}>
               <span className={s.name}>{name}</span>: {phone}
             </p>
-            <button
-              className={s.button}
-              onClick={() => dispatch(removeContacts(id))}
-            >
+            <Button variant="outlined" startIcon={<DeleteIcon />}>
               Delete
-            </button>
+            </Button>
           </li>
-        ))}
+        ))} */}
       </ul>
-      {isLoading && (
+      {/* {isLoading && (
         <div className={s.spinner}>
           <ThreeDots
             color="#5d8aa8"
@@ -47,7 +45,7 @@ const ContactList = () => {
             ariaLabel="three-dots-loading"
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };

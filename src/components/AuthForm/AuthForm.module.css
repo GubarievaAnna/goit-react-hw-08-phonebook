@@ -1,0 +1,9 @@
+.link:hover,
+.link:focus {
+  color: #0197f6;
+}
+
+.link,
+link:visited {
+  color: #13b3ff;
+}
