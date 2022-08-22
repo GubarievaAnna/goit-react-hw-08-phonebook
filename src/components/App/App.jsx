@@ -28,23 +28,15 @@ const App = () => {
         <Route path="/" element={<MainWrapper />}>
           <Route
             path="login"
-            element={
-              <PublicRoute component={LoginPage} nav="/contacts" restricted />
-            }
+            element={<PublicRoute component={LoginPage} restricted />}
           />
           <Route
             path="register"
-            element={
-              <PublicRoute
-                component={RegisterPage}
-                nav="/contacts"
-                restricted
-              />
-            }
+            element={<PublicRoute component={RegisterPage} restricted />}
           />
           <Route
             path="contacts"
-            element={<PrivateRoute component={ContactsPage} nav="/login" />}
+            element={<PrivateRoute component={ContactsPage} />}
           />
         </Route>
         <Route path="*" element={<Navigate to="/login" />} />

@@ -3,13 +3,12 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { getUserToken } from 'redux/auth/authSelector';
 
-const PrivateRoute = ({ component: Component, nav }) => {
+const PrivateRoute = ({ component: Component }) => {
   const isAuth = useSelector(getUserToken);
-  return isAuth ? <Component /> : <Navigate to={nav} />;
+  return isAuth ? <Component /> : <Navigate to="/login" />;
 };
 export default PrivateRoute;
 
 PrivateRoute.propTypes = {
   component: PropTypes.object,
-  nav: PropTypes.string.isRequired,
 };
