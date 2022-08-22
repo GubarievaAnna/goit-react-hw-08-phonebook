@@ -27,6 +27,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainWrapper />}>
           <Route
+            path="login"
+            element={
+              <PublicRoute component={SignInPage} nav="/contacts" restricted />
+            }
+          />
+          <Route
             path="register"
             element={
               <PublicRoute
@@ -37,13 +43,7 @@ const App = () => {
             }
           />
           <Route
-            path="login"
-            element={
-              <PublicRoute component={SignInPage} nav="/contacts" restricted />
-            }
-          />
-          <Route
-            path="/contacts"
+            path="contacts"
             element={<PrivateRoute component={ContactsPage} nav="/login" />}
           />
         </Route>
