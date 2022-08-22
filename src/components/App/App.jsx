@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserToken } from 'redux/auth/authSelector';
 import { getCurrentUser } from 'redux/auth/authOperations';
 
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
-const SignInPage = lazy(() => import('../../pages/LoginPage'));
 const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
           <Route
             path="login"
             element={
-              <PublicRoute component={SignInPage} nav="/contacts" restricted />
+              <PublicRoute component={LoginPage} nav="/contacts" restricted />
             }
           />
           <Route
