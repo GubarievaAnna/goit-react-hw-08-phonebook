@@ -18,6 +18,7 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!token) return;
     dispatch(getContacts(token));
   }, [token, dispatch]);
 
