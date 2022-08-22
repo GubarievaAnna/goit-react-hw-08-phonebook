@@ -43,7 +43,9 @@ const AuthForm = ({ title }) => {
   }, [error]);
 
   const onLinkClick = e => {
-    dispatch(changeError());
+    if (error) {
+      dispatch(changeError());
+    }
   };
 
   const onInputChange = e => {
