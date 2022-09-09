@@ -12,17 +12,24 @@ const token = {
 };
 
 export const registerUserApi = data => {
-  token.unset();
-  return axios.post('/users/signup', data).then(response => response.data);
+  return axios.post('/users/signup', data).then(({ data }) => {
+    token.set(data.token);
+    return data;
+  });
 };
 
 export const loginUserApi = data => {
-  token.unset();
-  return axios.post('/users/login', data).then(response => response.data);
+  return axios.post('/users/login', data).then(({ data }) => {
+    token.set(data.token);
+    return data;
+  });
 };
 
 export const logoutUserApi = () => {
-  return axios.post('/users/logout').then(response => response.data);
+  return axios.post('/users/logout').then(response => {
+    token.unset();
+    return response.data;
+  });
 };
 
 export const getCurrentUserApi = userToken => {
@@ -30,8 +37,7 @@ export const getCurrentUserApi = userToken => {
   return axios.get('/users/current').then(response => response.data);
 };
 
-export const getContactsApi = userToken => {
-  token.set(userToken);
+export const getContactsApi = () => {
   return axios('/contacts').then(response => response.data);
 };
 
