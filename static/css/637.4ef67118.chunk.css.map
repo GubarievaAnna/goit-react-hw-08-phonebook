@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/637.4ef67118.chunk.css","mappings":"AAAA,0DAEE,aACF,CAEA,oCAEE,aACF","sources":["components/AuthForm/AuthForm.module.css"],"sourcesContent":[".link:hover,\n.link:focus {\n  color: #0197f6;\n}\n\n.link,\nlink:visited {\n  color: #13b3ff;\n}\n"],"names":[],"sourceRoot":""}
